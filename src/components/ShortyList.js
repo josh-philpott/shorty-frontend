@@ -1,3 +1,9 @@
+import React, { Component } from "react"
+import axios from "axios"
+
+import Error from "./error"
+import "../App.css"
+
 class ShortyList extends Component {
   state = {
     shortys: [],
@@ -40,36 +46,36 @@ class ShortyList extends Component {
 
     if (isLoading) {
       //Show Loading Page
-      return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Shortys</h1>
-          </header>
-          <p className="App-intro">Loading...</p>
-        </div>
-      )
+      return <p>Loading...</p>
     }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Shortys</h1>
-        </header>
+      <div className="App-intro">
         {isError && <Error enabled={isError} message="There was an error!" />}
 
-        {this.state.shortys.map(shorty => (
-          <div className="App-intro">
-            <p>{shorty.url}</p>
-            <p>{shorty.shortUrl}</p>
-            <p>{shorty.dateAdded}</p>
-            <p>{shorty.cuid}</p>
-          </div>
-        ))}
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">CUID</th>
+              <th scope="col">Date Added</th>
+              <th scope="col">Original URL</th>
+              <th scope="col">Short URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.shortys.map(shorty => (
+              <tr>
+                <td>{shorty.cuid}</td>
+                <td>{shorty.dateAdded}</td>
+                <td>{shorty.url}</td>
+                <td>{shorty.shortUrl}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     )
   }
 }
 
-export default App
+export default ShortyList
