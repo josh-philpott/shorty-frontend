@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 
+import { Link } from "react-router-dom"
 import Error from "./error"
 import "../App.css"
 
@@ -56,19 +57,21 @@ class ShortyList extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">CUID</th>
+              <th scope="col">Key</th>
               <th scope="col">Date Added</th>
               <th scope="col">Original URL</th>
-              <th scope="col">Short URL</th>
             </tr>
           </thead>
           <tbody>
             {this.state.shortys.map(shorty => (
               <tr>
-                <td>{shorty.cuid}</td>
+                <td>{shorty.key}</td>
                 <td>{shorty.dateAdded}</td>
-                <td>{shorty.url}</td>
-                <td>{shorty.shortUrl}</td>
+                <td>
+                  <a href={"http://localhost:8000/" + shorty.key}>
+                    {"http://localhost:8000/" + shorty.key}
+                  </a>
+                </td>
               </tr>
             ))}
           </tbody>

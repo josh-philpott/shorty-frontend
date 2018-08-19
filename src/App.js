@@ -1,32 +1,34 @@
 import React, { Component } from "react"
-
+import { Grid, Navbar, Row, Col } from "react-bootstrap"
 import ShortyList from "./components/ShortyList"
 import UrlInput from "./components/UrlInput"
-import logo from "./logo.svg"
-import "./App.css"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-intro container">
-          <div className="row">
-            <div className="col-sm-12">
-              <h1 className="text-center">URL Shortener</h1>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-sm-12">
+      <div>
+        <Navbar inverse>
+          <Grid>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">Shortr</a>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+          </Grid>
+        </Navbar>
+        <Grid>
+          <Row>
+            <Col xs={12}>
               <UrlInput />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-12">
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
               <ShortyList />
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
